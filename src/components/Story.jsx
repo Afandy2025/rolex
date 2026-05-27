@@ -163,15 +163,6 @@ export default function Story() {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
-
-  const imageY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const romanY1 = useTransform(scrollYProgress, [0, 1], [-150, 150]);
-  const romanY2 = useTransform(scrollYProgress, [0, 1], [150, -150]);
-
   const isTextInView = useInView(textRef, { once: true, margin: '-80px' });
 
   return (
@@ -181,21 +172,23 @@ export default function Story() {
       {/* Ambient Glow */}
       <div className="ambient-glow" style={{ top: '20%', right: '-20%', background: 'radial-gradient(circle, rgba(163, 126, 44, 0.15) 0%, rgba(0, 45, 26, 0.2) 50%, transparent 70%)' }} />
 
-      {/* Deep Parallax Elements */}
-      <motion.div className="story-roman" style={{ ...styles.romanBase, ...styles.romanXII, y: romanY1 }}>XII</motion.div>
-      <motion.div className="story-roman" style={{ ...styles.romanBase, ...styles.romanVI, y: romanY2 }}>VI</motion.div>
+      {/* Deep Background Elements (Static for Performance) */}
+      <motion.div className="story-roman" style={{ ...styles.romanBase, ...styles.romanXII }}>XII</motion.div>
+      <motion.div className="story-roman" style={{ ...styles.romanBase, ...styles.romanVI }}>VI</motion.div>
 
       <div className="cinematic-grid story-inner" style={{ position: 'relative', zIndex: 2, alignItems: 'center' }}>
         
         {/* Asymmetric Image */}
         <div className="story-image-col col-span-6 col-span-md-full col-span-sm-full" style={{ position: 'relative', zIndex: 1 }}>
-          <motion.div style={{ y: imageY, ...styles.imageWrapper }}>
+          <motion.div style={styles.imageWrapper}>
             <motion.img
               src={emperorImg}
               alt="Reptilian Alexander the Great holding a Rolex"
               style={styles.image}
-              animate={{ y: [0, -20, 0], scale: [1, 1.02, 1] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              initial={{ scale: 1.05, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 1.5, ease: LUXURY_EASE }}
             />
           </motion.div>
         </div>

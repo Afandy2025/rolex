@@ -13,8 +13,6 @@ const NetworkNode = ({ x, y, delay, label }) => (
     style={{ position: 'absolute', left: `${x}%`, top: `${y}%`, display: 'flex', flexDirection: 'column', alignItems: 'center' }}
   >
     <motion.div
-      animate={{ boxShadow: ['0 0 10px var(--gold)', '0 0 30px var(--gold)', '0 0 10px var(--gold)'] }}
-      transition={{ duration: 3, repeat: Infinity, delay }}
       style={{ width: '20px', height: '20px', background: 'var(--gold)', borderRadius: '50%', border: '4px solid var(--dark-green)' }}
     />
     <span style={{ marginTop: '0.5rem', color: 'var(--gold)', fontSize: '0.75rem', fontFamily: 'var(--font-heading)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</span>
@@ -81,9 +79,8 @@ export default function NFTBlockchain() {
             initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: LUXURY_EASE }}
             style={{ width: '100%', paddingTop: '120%', background: 'linear-gradient(135deg, rgba(163,126,44,0.2) 0%, rgba(0,0,0,0) 100%)', borderRadius: 'var(--radius-lg)', border: '1px solid rgba(163,126,44,0.3)', position: 'relative', overflow: 'hidden' }}
           >
-            {/* Mock hologram or abstract luxury shape */}
+            {/* Mock hologram or abstract luxury shape (Static for performance) */}
             <motion.div 
-              animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
               style={{ position: 'absolute', top: '20%', left: '20%', right: '20%', bottom: '20%', border: '2px dashed rgba(163,126,44,0.5)', borderRadius: '50%' }}
             />
             <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

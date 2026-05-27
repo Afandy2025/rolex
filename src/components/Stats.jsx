@@ -220,18 +220,10 @@ function GoldParticles({ count = 15 }) {
             top: p.top,
             width: p.size,
             height: p.size,
-            opacity: p.opacity,
           }}
-          animate={{
-            y: [0, -30, 0],
-            opacity: [p.opacity, p.opacity * 2, p.opacity],
-          }}
-          transition={{
-            duration: p.duration,
-            repeat: Infinity,
-            delay: p.delay,
-            ease: 'easeInOut',
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: p.opacity }}
+          transition={{ duration: 2, delay: p.delay, ease: 'easeInOut' }}
         />
       ))}
     </div>

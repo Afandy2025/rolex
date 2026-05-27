@@ -310,11 +310,12 @@ p {
   width: 60vw;
   height: 60vw;
   background: radial-gradient(circle, rgba(163, 126, 44, 0.15) 0%, rgba(0, 45, 26, 0.2) 40%, transparent 70%);
-  filter: blur(100px);
+  filter: blur(50px); /* Reduced from 100px for performance */
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: screen;
+  will-change: transform; /* Hint for compositing */
 }
 
 /* ── Glass Cards ──────────────────────────────────────── */
@@ -334,7 +335,7 @@ p {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(163, 126, 44, 0.15);
 }
 
-/* ── Global Noise & Texture ───────────────────────────── */
+/* ── Global Noise & Texture (Static for Performance) ──── */
 body::before {
   content: '';
   position: fixed;
@@ -344,7 +345,6 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   opacity: 0.04;
   pointer-events: none;
-  animation: noise 8s steps(10) infinite;
   z-index: 9999;
   mix-blend-mode: overlay;
 }

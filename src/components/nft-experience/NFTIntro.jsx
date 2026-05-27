@@ -142,12 +142,13 @@ export default function NFTIntro() {
             )}
           </div>
           
-          {/* Decorative Right Side Graphic */}
+          {/* Decorative Right Side Graphic (Static for Performance) */}
           <div style={{ width: '30%', borderLeft: '1px solid rgba(163,126,44,0.2)', paddingLeft: '3rem', position: 'relative' }}>
              <motion.div 
-               animate={{ opacity: [0.3, 0.7, 0.3] }}
-               transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-               style={{ fontFamily: 'var(--font-heading)', fontSize: '8rem', color: 'var(--gold)', opacity: 0.1, lineHeight: 0.8, letterSpacing: '-0.05em' }}
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 0.3 }}
+               transition={{ duration: 4, ease: 'easeInOut' }}
+               style={{ fontFamily: 'var(--font-heading)', fontSize: '8rem', color: 'var(--gold)', lineHeight: 0.8, letterSpacing: '-0.05em' }}
              >
                ON-<br/>CHAIN
              </motion.div>
@@ -179,11 +180,9 @@ export default function NFTIntro() {
               position: 'relative',
               overflow: 'hidden'
             }}>
-              {/* Scanline effect */}
-              <motion.div 
-                animate={{ top: ['-10%', '110%'] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                style={{ position: 'absolute', width: '100%', height: '2px', background: 'var(--gold)', opacity: 0.5, boxShadow: '0 0 20px var(--gold)' }}
+              {/* Static overlay instead of expensive animated scanline */}
+              <div 
+                style={{ position: 'absolute', inset: 0, background: 'linear-gradient(rgba(163,126,44,0.1) 1px, transparent 1px)', backgroundSize: '100% 4px', opacity: 0.5, pointerEvents: 'none' }}
               />
               <img src={pastedImage} alt="NFT Showcase" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: '2rem' }} />
             </div>

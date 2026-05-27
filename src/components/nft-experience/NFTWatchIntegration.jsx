@@ -27,12 +27,7 @@ export default function NFTWatchIntegration() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start']
-  });
-
-  const watchY = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  /* Removed scroll transform for performance */
 
   return (
     <section ref={sectionRef} style={{ padding: '12rem 0', background: 'var(--darker-green)', position: 'relative', overflow: 'hidden' }}>
@@ -45,10 +40,11 @@ export default function NFTWatchIntegration() {
         {/* ── Left: Watch Visual & Hologram ── */}
         <div style={{ flex: '1 1 500px', position: 'relative', height: '600px' }}>
           
-          {/* Cyber scanner ring */}
+          {/* Cyber scanner ring (Static for performance) */}
           <motion.div
-            animate={{ rotateX: [60, 60], rotateZ: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 2 }}
             style={{
               position: 'absolute', top: '50%', left: '50%', width: '150%', height: '150%',
               marginLeft: '-75%', marginTop: '-75%',
@@ -61,14 +57,15 @@ export default function NFTWatchIntegration() {
           <motion.img
             src={watchImg}
             alt="Rolex connected to Blockchain"
-            style={{ y: watchY, width: '100%', height: '100%', objectFit: 'contain', position: 'relative', zIndex: 2, filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.5))' }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, ease: LUXURY_EASE }}
+            style={{ width: '100%', height: '100%', objectFit: 'contain', position: 'relative', zIndex: 2, filter: 'drop-shadow(0 30px 40px rgba(0,0,0,0.5))' }}
           />
           
-          {/* Holographic scanning effect */}
-          <motion.div
-            animate={{ top: ['0%', '100%', '0%'] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
-            style={{ position: 'absolute', left: '10%', right: '10%', height: '4px', background: 'var(--gold)', opacity: 0.8, zIndex: 3, boxShadow: '0 0 20px var(--gold)', filter: 'blur(2px)' }}
+          {/* Holographic scanning effect (Static overlay for performance) */}
+          <div
+            style={{ position: 'absolute', left: '10%', right: '10%', top: '50%', height: '2px', background: 'var(--gold)', opacity: 0.3, zIndex: 3, boxShadow: '0 0 20px var(--gold)' }}
           />
 
           {/* Roman Floating Ornaments */}
@@ -103,7 +100,7 @@ export default function NFTWatchIntegration() {
           >
             {/* Live Verification Status */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-              <motion.div animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 2, repeat: Infinity }} style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#00ff88', boxShadow: '0 0 10px #00ff88' }} />
+              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#00ff88', boxShadow: '0 0 10px #00ff88' }} />
               <span style={{ color: '#00ff88', letterSpacing: '0.1em', fontSize: '0.9rem', fontWeight: 600 }}>BLOCKCHAIN VERIFIED</span>
             </div>
 
@@ -113,12 +110,10 @@ export default function NFTWatchIntegration() {
             <DashboardItem title="Provenance" value="Immutable Ledger" delay={0.5} />
             <DashboardItem title="Metaverse / AR" value="Ready & Synced" delay={0.6} />
             
-            {/* Animated Loading Bar */}
+            {/* Animated Loading Bar (Static for Performance) */}
             <div style={{ marginTop: '2rem', height: '2px', width: '100%', background: 'rgba(245,240,232,0.1)', overflow: 'hidden' }}>
-              <motion.div
-                initial={{ x: '-100%' }} animate={{ x: '100%' }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                style={{ width: '50%', height: '100%', background: 'linear-gradient(90deg, transparent, var(--gold), transparent)' }}
+              <div
+                style={{ width: '100%', height: '100%', background: 'linear-gradient(90deg, transparent, var(--gold), transparent)' }}
               />
             </div>
 

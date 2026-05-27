@@ -37,9 +37,8 @@ function GoldParticles() {
     return Array.from({ length: 30 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
+      y: Math.random() * 100,
       size: 2 + Math.random() * 4,
-      duration: 4 + Math.random() * 6,
-      delay: Math.random() * 5,
       opacity: 0.2 + Math.random() * 0.6,
     }));
   }, []);
@@ -80,15 +79,13 @@ function GoldParticles() {
           style={{
             position: 'absolute',
             left: `${p.x}%`,
-            bottom: '-20px',
+            bottom: `${p.y}%`, // Use random y instead of animating from bottom
             width: p.size,
             height: p.size,
             borderRadius: '50%',
             background: `radial-gradient(circle, var(--gold-light), var(--gold))`,
             boxShadow: `0 0 ${p.size * 2}px rgba(163, 126, 44, 0.4)`,
-            '--p-opacity': p.opacity,
-            animation: `floatUp ${p.duration}s linear ${p.delay}s infinite`,
-            willChange: 'transform, opacity',
+            opacity: p.opacity, // Just static opacity
           }}
         />
       ))}
@@ -195,10 +192,9 @@ function ScrollIndicator() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        animate={{ y: [0, 8, 0] }}
+        animate={{ y: 0 }}
         transition={{
           duration: 2,
-          repeat: Infinity,
           ease: 'easeInOut',
         }}
       >
@@ -215,12 +211,8 @@ export default function Hero() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
-  /* ── Parallax: video moves slower than scroll ──────────── */
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  });
-  const videoY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  /* ── No heavy scroll tracking for performance ──────────── */
+  const videoY = '0%';
 
   /* ── Headline text ──────────────────────────────────────── */
   const headline = 'THE CROWN ON THE BLOCKCHAIN';

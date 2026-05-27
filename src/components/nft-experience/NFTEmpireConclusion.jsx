@@ -120,16 +120,17 @@ export default function NFTEmpireConclusion() {
           {Array.from({ length: 20 }).map((_, i) => (
             <motion.div
               key={i}
-              animate={{ y: ['100vh', '-10vh'], x: [Math.random() * 20 - 10, Math.random() * -20 + 10] }}
-              transition={{ duration: 10 + Math.random() * 10, repeat: Infinity, ease: 'linear', delay: Math.random() * 5 }}
-              style={{ position: 'absolute', left: `${Math.random() * 100}%`, bottom: '-10px', width: Math.random() * 4 + 2, height: Math.random() * 4 + 2, background: 'var(--gold)', borderRadius: '50%', boxShadow: '0 0 15px var(--gold)', opacity: Math.random() * 0.8 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: Math.random() * 0.5 }}
+              transition={{ duration: 2, delay: Math.random() * 2 }}
+              style={{ position: 'absolute', left: `${Math.random() * 100}%`, bottom: `${Math.random() * 100}%`, width: Math.random() * 4 + 2, height: Math.random() * 4 + 2, background: 'var(--gold)', borderRadius: '50%', boxShadow: '0 0 15px var(--gold)' }}
             />
           ))}
         </div>
 
-        {/* Floating Blockchain Symbols */}
-        <motion.div animate={{ y: [0, -20, 0], rotateZ: [0, 10, 0] }} transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }} style={{ position: 'absolute', top: '20%', left: '15%', fontSize: '4rem', color: 'var(--gold)', opacity: 0.1, fontFamily: 'var(--font-heading)' }}>ETH</motion.div>
-        <motion.div animate={{ y: [0, 30, 0], rotateZ: [0, -15, 0] }} transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }} style={{ position: 'absolute', bottom: '20%', right: '15%', fontSize: '5rem', color: 'var(--gold)', opacity: 0.1, fontFamily: 'var(--font-heading)' }}>SOL</motion.div>
+        {/* Floating Blockchain Symbols (Static for Performance) */}
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 0.1 }} transition={{ duration: 2 }} style={{ position: 'absolute', top: '20%', left: '15%', fontSize: '4rem', color: 'var(--gold)', fontFamily: 'var(--font-heading)' }}>ETH</motion.div>
+        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 0.1 }} transition={{ duration: 2 }} style={{ position: 'absolute', bottom: '20%', right: '15%', fontSize: '5rem', color: 'var(--gold)', fontFamily: 'var(--font-heading)' }}>SOL</motion.div>
 
         <div className="section-inner" style={{ position: 'relative', zIndex: 10, textAlign: 'center', width: '100%', padding: '0 2rem' }}>
           
