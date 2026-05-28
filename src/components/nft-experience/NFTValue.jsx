@@ -93,7 +93,7 @@ export default function NFTValue() {
           animate={isInView ? 'visible' : 'hidden'}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}
         >
-          {values.map((v, i) => (
+          {(Array.isArray(values) ? values : []).map((v, i) => (
             <ValueBlock key={i} index={i + 1} title={v.title} desc={v.desc} stat={v.stat} />
           ))}
         </motion.div>

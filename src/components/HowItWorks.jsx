@@ -380,7 +380,7 @@ export default function HowItWorks() {
 
   const stepsData = t('how_it_works.steps', { returnObjects: true }) || [];
   const iconsKeys = ['wallet', 'crown', 'diamond'];
-  const steps = stepsData.map((step, index) => ({
+  const steps = (Array.isArray(stepsData) ? stepsData : []).map((step, index) => ({
     ...step,
     number: `0${index + 1}`,
     icon: iconsKeys[index]

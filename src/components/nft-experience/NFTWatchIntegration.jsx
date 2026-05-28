@@ -107,7 +107,7 @@ export default function NFTWatchIntegration() {
               <span style={{ color: '#00ff88', letterSpacing: '0.1em', fontSize: '0.9rem', fontWeight: 600 }}>{t('nft_watch_integration.status')}</span>
             </div>
 
-            {dashboard.map((item, index) => (
+            {(Array.isArray(dashboard) ? dashboard : []).map((item, index) => (
               <DashboardItem key={index} title={item.title} value={item.value} delay={0.2 + (index * 0.1)} />
             ))}
             

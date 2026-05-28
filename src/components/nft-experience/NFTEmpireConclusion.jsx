@@ -95,7 +95,7 @@ export default function NFTEmpireConclusion() {
           )}
 
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
-            {pills.map((item, i) => (
+            {(Array.isArray(pills) ? pills : []).map((item, i) => (
               <motion.div
                 key={item}
                 initial={{ opacity: 0, scale: 0.8 }}

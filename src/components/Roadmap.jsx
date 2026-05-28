@@ -263,7 +263,7 @@ export default function Roadmap() {
           />
 
           {/* Milestones */}
-          {milestones.map((m, i) => (
+          {(Array.isArray(milestones) ? milestones : []).map((m, i) => (
             <MilestoneCard key={m.phase} data={m} index={i} />
           ))}
         </div>

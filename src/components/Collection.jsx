@@ -150,7 +150,7 @@ export default function Collection() {
 
         {/* Horizontal scrolling track */}
         <motion.div style={{ x, display: 'flex', gap: '3rem', padding: '0 4rem', width: 'max-content', direction: 'ltr' }}>
-          {translatedFeatures.map((item, i) => (
+          {(Array.isArray(translatedFeatures) ? translatedFeatures : []).map((item, i) => (
             <FeatureCard key={i} item={item} index={i} />
           ))}
         </motion.div>

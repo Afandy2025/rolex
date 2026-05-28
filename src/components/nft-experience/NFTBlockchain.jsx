@@ -107,7 +107,7 @@ export default function NFTBlockchain() {
           <div style={{ padding: '1.5rem', background: 'rgba(163,126,44,0.1)', borderLeft: '4px solid var(--gold)', borderRadius: '0 8px 8px 0' }}>
             <h4 style={{ color: 'var(--gold)', margin: '0 0 0.5rem 0', fontFamily: 'var(--font-heading)', fontSize: '1.2rem' }}>{t('nft_blockchain.after_title')}</h4>
             <ul style={{ color: 'var(--cream)', margin: 0, paddingLeft: '1.2rem', lineHeight: 1.8 }}>
-              {afterList.map((item, index) => (
+              {(Array.isArray(afterList) ? afterList : []).map((item, index) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
@@ -131,7 +131,7 @@ export default function NFTBlockchain() {
             <div>{s3Header[2]}</div>
           </div>
           
-          {s3Rows.map((row, i) => (
+          {(Array.isArray(s3Rows) ? s3Rows : []).map((row, i) => (
             <ComparisonRow key={i} title={row.title} crypto={row.crypto} nft={row.nft} delay={0.2 + (i * 0.1)} />
           ))}
           </div>

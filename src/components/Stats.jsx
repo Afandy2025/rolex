@@ -249,7 +249,7 @@ export default function Stats() {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        {stats.map((stat, i) => {
+        {(Array.isArray(stats) ? stats : []).map((stat, i) => {
           // Create the uneven asymmetric grid spans for desktop
           const gridSpans = ['1 / span 3', '4 / span 3', '8 / span 3', '11 / span 2'];
           const classNames = "col-span-md-3 col-span-sm-full";

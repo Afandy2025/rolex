@@ -198,7 +198,7 @@ export default function FAQ() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, ease: LUXURY_EASE, delay: 0.15 }}
           >
-            {faqData.map((item, i) => (
+            {(Array.isArray(faqData) ? faqData : []).map((item, i) => (
               <FAQItem
                 key={i}
                 item={item}
