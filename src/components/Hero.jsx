@@ -11,7 +11,7 @@
    • Animated scroll indicator at bottom
    ═══════════════════════════════════════════════════════════ */
 
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useMemo } from 'react';
 import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
