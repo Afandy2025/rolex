@@ -213,7 +213,7 @@ export default function Hero() {
 
   /* ── Headline text ──────────────────────────────────────── */
   const headline = t('hero.title');
-  const letters = headline.split('');
+  const letters = headline.split(' ');
 
   /* ── Stagger variants for letter-by-letter reveal ──────── */
   const containerVariants = {
@@ -362,7 +362,7 @@ export default function Hero() {
                 variants={letterVariants}
                 style={{
                   display: 'inline-block',
-                  whiteSpace: char === ' ' ? 'pre' : 'normal',
+                  marginInlineEnd: '0.3em', whiteSpace: 'nowrap',
                 }}
               >
                 {char}

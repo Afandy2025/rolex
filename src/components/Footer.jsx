@@ -116,7 +116,7 @@ const s = {
     flexDirection: 'column',
     alignItems: 'flex-end',
     gap: 6,
-    textAlign: 'right',
+    textAlign: 'end',
   },
   copyright: {
     fontFamily: 'var(--font-body)',

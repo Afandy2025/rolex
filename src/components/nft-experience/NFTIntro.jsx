@@ -125,8 +125,8 @@ export default function NFTIntro() {
       <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 2 }}>
         
         {/* Title Block - Left Aligned to use side space */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8rem', padding: '0 5vw' }}>
-          <div style={{ maxWidth: '600px', textAlign: 'left' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8rem', padding: '0 5vw', flexWrap: 'wrap', gap: '4rem' }}>
+          <div style={{ maxWidth: '600px', textAlign: 'start' }}>
             {isInView && (
               <AnimatedText 
                 text={t('nft_intro.title')} 
@@ -145,12 +145,12 @@ export default function NFTIntro() {
           </div>
           
           {/* Decorative Right Side Graphic (Static for Performance) */}
-          <div style={{ width: '30%', borderLeft: '1px solid rgba(163,126,44,0.2)', paddingLeft: '3rem', position: 'relative' }}>
+          <div style={{ width: '30%', borderInlineStart: '1px solid rgba(163,126,44,0.2)', paddingInlineStart: '3rem', position: 'relative' }}>
              <motion.div 
                initial={{ opacity: 0 }}
                whileInView={{ opacity: 0.3 }}
                transition={{ duration: 4, ease: 'easeInOut' }}
-               style={{ fontFamily: 'var(--font-heading)', fontSize: '8rem', color: 'var(--gold)', lineHeight: 0.8, letterSpacing: '-0.05em' }}
+               style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(3rem, 6vw, 8rem)', color: 'var(--gold)', lineHeight: 0.8, letterSpacing: '-0.05em' }}
              >
                ON-<br/>CHAIN
              </motion.div>

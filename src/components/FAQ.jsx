@@ -36,7 +36,7 @@ const s = {
   heading: {
     fontFamily: 'var(--font-heading)',
     fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-    textAlign: 'left',
+    textAlign: 'start',
     marginBottom: 'var(--space-sm)',
   },
   dividerWrap: {
@@ -57,7 +57,7 @@ const s = {
     background: 'none',
     border: 'none',
     width: '100%',
-    textAlign: 'left',
+    textAlign: 'start',
     gap: '1rem',
   },
   questionText: {

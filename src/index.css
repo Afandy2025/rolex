@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap");
 /* ═══════════════════════════════════════════════════════════
    ROLEX × NFT — Global Styles & Design System
    ═══════════════════════════════════════════════════════════ */
@@ -27,7 +28,7 @@
 }
 
 [dir="rtl"] {
-  --font-heading: 'Amiri', 'Playfair Display', Georgia, serif;
+  --font-heading: 'Cairo', 'Playfair Display', Georgia, serif;
   --font-body: 'Cairo', 'Inter', -apple-system, sans-serif;
   --dir-sign: -1;
 }

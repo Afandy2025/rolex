@@ -227,7 +227,7 @@ export default function Roadmap() {
         <div className="col-span-4 col-span-md-full col-span-sm-full" style={{ gridColumn: '1 / span 4', position: 'sticky', top: '120px' }}>
           <motion.h2
             className="gold-gradient-text"
-            style={{ ...s.heading, textAlign: 'left' }}
+            style={{ ...s.heading, textAlign: 'start' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-60px' }}
@@ -237,7 +237,7 @@ export default function Roadmap() {
           </motion.h2>
 
           <motion.p
-            style={{ ...s.subtitle, textAlign: 'left' }}
+            style={{ ...s.subtitle, textAlign: 'start' }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
