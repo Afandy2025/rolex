@@ -51,7 +51,7 @@ const s = {
     padding: 'var(--space-3xl) 5vw',
     position: 'relative',
     background: 'var(--dark-green)',
-    width: '100vw',
+    width: '100%',
   },
   inner: {
     width: '100%',

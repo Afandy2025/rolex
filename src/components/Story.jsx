@@ -52,7 +52,7 @@ const styles = {
     overflow: 'hidden',
     background: 'transparent', // Let global background show through
     padding: '12rem 0',
-    width: '100vw',
+    width: '100%',
   },
   inner: {
     display: 'flex',

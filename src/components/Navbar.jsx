@@ -101,21 +101,26 @@ const mobileLinkVariants = {
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const location = useLocation();
 
   /* ── Detect mobile breakpoint ──────────────────────────── */
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   /* ── Lock body scroll when mobile menu is open ─────────── */
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [mobileOpen]);
   
   /* ── Close mobile menu on route change ─────────── */

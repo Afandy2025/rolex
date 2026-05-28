@@ -87,15 +87,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 6vw, 4.5rem);
 }
 
 h2 {
-  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
 }
 
 h3 {
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
 }
 
 p {
@@ -240,7 +240,7 @@ p {
 .section {
   padding: calc(var(--space-3xl) + env(safe-area-inset-top)) 0 var(--space-3xl) 0;
   position: relative;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -254,7 +254,7 @@ p {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 2vw;
-  width: 100vw;
+  width: 100%;
   padding: 0 4vw;
   position: relative;
 }

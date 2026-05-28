@@ -75,7 +75,7 @@ export default function NFTEmpireConclusion() {
         
         {/* Architectural / Cyber Roman Temple Background */}
         <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(90deg, rgba(163,126,44,0.1) 1px, transparent 1px)', backgroundSize: '100px 100%' }} />
-        <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '800px', background: 'radial-gradient(circle at top, rgba(163,126,44,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '800px', background: 'radial-gradient(circle at top, rgba(163,126,44,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
         
         {/* Floating Roman Columns (Abstract CSS representation) */}
         <div style={{ position: 'absolute', left: '10%', top: 0, bottom: 0, width: '40px', background: 'linear-gradient(90deg, rgba(0,0,0,0.5), rgba(255,255,255,0.05), rgba(0,0,0,0.5))', boxShadow: '0 0 20px rgba(0,0,0,0.8)', borderLeft: '1px solid rgba(163,126,44,0.2)', borderRight: '1px solid rgba(163,126,44,0.2)' }} />

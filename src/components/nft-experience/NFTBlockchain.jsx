@@ -74,7 +74,7 @@ export default function NFTBlockchain() {
       {/* ── 2. WHY NFT MATTERS (Split Layout) ─────────────── */}
       <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', marginBottom: '10rem', display: 'flex', gap: '4rem', flexWrap: 'wrap', alignItems: 'center' }}>
         {/* Left: Luxury Visual */}
-        <div style={{ flex: '1 1 400px', position: 'relative' }}>
+        <div style={{ flex: '1 1 min(100%, 400px)', position: 'relative' }}>
           <motion.div 
             initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1, ease: LUXURY_EASE }}
             style={{ width: '100%', paddingTop: '120%', background: 'linear-gradient(135deg, rgba(163,126,44,0.2) 0%, rgba(0,0,0,0) 100%)', borderRadius: 'var(--radius-lg)', border: '1px solid rgba(163,126,44,0.3)', position: 'relative', overflow: 'hidden' }}
@@ -90,7 +90,7 @@ export default function NFTBlockchain() {
         </div>
 
         {/* Right: Storytelling */}
-        <div style={{ flex: '1 1 400px' }}>
+        <div style={{ flex: '1 1 min(100%, 400px)' }}>
           <AnimatedText text="THE PARADIGM SHIFT" el="h3" style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }} />
           <AnimatedText text="Redefining Rarity" el="h2" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)', marginBottom: '2rem' }} />
           
@@ -118,7 +118,8 @@ export default function NFTBlockchain() {
           <AnimatedText text="Understanding the fundamental difference." el="p" style={{ color: 'var(--gold)', letterSpacing: '0.05em' }} />
         </div>
 
-        <div style={{ background: 'rgba(0, 30, 15, 0.6)', border: '1px solid rgba(163,126,44,0.3)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', backdropFilter: 'blur(20px)' }}>
+        <div style={{ background: 'rgba(0, 30, 15, 0.6)', border: '1px solid rgba(163,126,44,0.3)', borderRadius: 'var(--radius-lg)', overflowX: 'auto', overflowY: 'hidden', backdropFilter: 'blur(20px)' }}>
+          <div style={{ minWidth: '600px' }}>
           {/* Header */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', padding: '1.5rem', background: 'rgba(163,126,44,0.1)', borderBottom: '2px solid rgba(163,126,44,0.4)', fontFamily: 'var(--font-heading)', letterSpacing: '0.1em', color: 'var(--gold-light)' }}>
             <div>FEATURE</div>
@@ -130,6 +131,7 @@ export default function NFTBlockchain() {
           <ComparisonRow title="Classification" crypto="Currency / Medium of Exchange" nft="Digital Asset / Collectible" delay={0.3} />
           <ComparisonRow title="Examples" crypto="Bitcoin (BTC), Ethereum (ETH)" nft="Luxury Watches, Digital Art" delay={0.4} />
           <ComparisonRow title="Value Basis" crypto="Equal units (1 BTC = 1 BTC)" nft="Subjective & Historical Value" delay={0.5} />
+          </div>
         </div>
       </div>
 

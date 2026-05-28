@@ -38,7 +38,7 @@ export default function NFTWatchIntegration() {
       <div className="section-inner" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '4rem', alignItems: 'center', flexWrap: 'wrap' }}>
         
         {/* ── Left: Watch Visual & Hologram ── */}
-        <div style={{ flex: '1 1 500px', position: 'relative', height: '600px' }}>
+        <div style={{ flex: '1 1 min(100%, 500px)', position: 'relative', height: 'clamp(400px, 60vw, 600px)' }}>
           
           {/* Cyber scanner ring (Static for performance) */}
           <motion.div
@@ -74,7 +74,7 @@ export default function NFTWatchIntegration() {
         </div>
 
         {/* ── Right: Luxury Dashboard UI ── */}
-        <div style={{ flex: '1 1 500px', position: 'relative', zIndex: 5 }}>
+        <div style={{ flex: '1 1 min(100%, 500px)', position: 'relative', zIndex: 5 }}>
           
           <AnimatedText text="THE PHYSICAL MEETS DIGITAL" el="h3" style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }} />
           <AnimatedText text="A New Dimension of Luxury" el="h2" style={{ fontSize: 'clamp(2.5rem, 4vw, 4rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)', marginBottom: '2rem', lineHeight: 1.1 }} />

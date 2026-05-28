@@ -258,7 +258,7 @@ function RowCards() {
   const isInView = useInView(containerRef, { once: true, margin: '-50px' });
 
   return (
-    <div style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', overflow: 'hidden' }}>
+    <div style={{ width: '100%', overflow: 'hidden' }}>
       <motion.div 
         ref={containerRef}
         variants={staggerVariants}

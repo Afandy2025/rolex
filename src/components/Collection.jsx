@@ -75,7 +75,7 @@ function FeatureCard({ item, index }) {
   };
 
   return (
-    <Link to="/story" style={{ textDecoration: 'none', display: 'block', width: '400px', height: '500px', flexShrink: 0 }}>
+    <Link to="/story" style={{ textDecoration: 'none', display: 'block', width: 'clamp(280px, 80vw, 400px)', height: '500px', flexShrink: 0 }}>
       <motion.div
         ref={cardRef}
         onMouseMove={handleMouseMove}
