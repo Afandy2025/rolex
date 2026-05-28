@@ -10,6 +10,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import rolexLogo from '../../assets/Logo_da_Rolex.png';
 
 /* ── Luxury easing curve ──────────────────────────────────── */
@@ -17,16 +18,18 @@ const LUXURY_EASE = [0.22, 1, 0.36, 1];
 
 /* ── Navigation links ─────────────────────────────────────── */
 const NAV_LINKS = [
-  { label: 'The Watch', href: '/watch' },
-  { label: 'Story', href: '/story' },
-  { label: 'Roadmap', href: '/roadmap' },
+  { key: 'the_watch', href: '/watch' },
+  { key: 'story', href: '/story' },
+  { key: 'roadmap', href: '/roadmap' },
 ];
 
 /* ── Desktop NavLink with animated underline ──────────────── */
-function NavLink({ label, href }) {
+function NavLink({ labelKey, href }) {
   const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
   const isActive = location.pathname === href;
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === 'rtl';
 
   return (
     <Link
@@ -46,7 +49,7 @@ function NavLink({ label, href }) {
         transition: 'color 0.3s ease',
       }}
     >
-      <motion.span whileHover={{ color: '#d4aa50' }}>{label}</motion.span>
+      <motion.span whileHover={{ color: '#d4aa50' }}>{t(`nav.${labelKey}`)}</motion.span>
 
       {/* ── Animated gold underline from left ─────────────── */}
       <motion.span
@@ -54,10 +57,10 @@ function NavLink({ label, href }) {
           position: 'absolute',
           bottom: 0,
           left: 0,
+          right: 0,
           height: '1.5px',
-          width: '100%',
           background: 'linear-gradient(90deg, var(--gold), var(--gold-light))',
-          transformOrigin: 'left',
+          transformOrigin: isRtl ? 'right' : 'left',
         }}
         initial={{ scaleX: isActive ? 1 : 0 }}
         animate={{ scaleX: isActive || isHovered ? 1 : 0 }}
@@ -103,6 +106,12 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'en' ? 'ar' : 'en';
+    i18n.changeLanguage(newLang);
+  };
 
   /* ── Detect mobile breakpoint ──────────────────────────── */
   useEffect(() => {
@@ -191,13 +200,45 @@ export default function Navbar() {
             }}
           >
             {NAV_LINKS.map((link) => (
-              <NavLink key={link.href} {...link} />
+              <NavLink key={link.href} labelKey={link.key} href={link.href} />
             ))}
+            <button
+              onClick={toggleLanguage}
+              style={{
+                background: 'none',
+                border: '1px solid var(--gold)',
+                color: 'var(--gold)',
+                padding: '0.3rem 0.8rem',
+                borderRadius: 'var(--radius-sm)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.8rem',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {i18n.language === 'en' ? 'العربية' : 'EN'}
+            </button>
           </div>
         )}
 
         {/* ── Mobile Hamburger Icon ───────────────────────── */}
         {isMobile && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <button
+              onClick={toggleLanguage}
+              style={{
+                background: 'none',
+                border: '1px solid var(--gold)',
+                color: 'var(--gold)',
+                padding: '0.2rem 0.6rem',
+                borderRadius: 'var(--radius-sm)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.75rem',
+                cursor: 'pointer',
+              }}
+            >
+              {i18n.language === 'en' ? 'AR' : 'EN'}
+            </button>
           <motion.button
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{
@@ -254,6 +295,7 @@ export default function Navbar() {
               transition={{ duration: 0.3, ease: LUXURY_EASE }}
             />
           </motion.button>
+          </div>
         )}
       </motion.nav>
 
@@ -306,10 +348,10 @@ export default function Navbar() {
                       fontWeight: 700,
                       letterSpacing: '0.06em',
                     }}
-                    whileHover={{ color: '#d4aa50', x: 10 }}
+                    whileHover={{ color: '#d4aa50', x: i18n.dir() === 'rtl' ? -10 : 10 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {link.label}
+                    {t(`nav.${link.key}`)}
                   </motion.div>
                 </Link>
               ))}

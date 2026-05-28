@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import AnimatedText from '../AnimatedText';
 
 const LUXURY_EASE = [0.22, 1, 0.36, 1];
@@ -39,6 +40,10 @@ const ComparisonRow = ({ title, crypto, nft, delay }) => (
 
 export default function NFTBlockchain() {
   const sectionRef = useRef(null);
+  const { t } = useTranslation();
+  const afterList = t('nft_blockchain.after_list', { returnObjects: true }) || [];
+  const s3Header = t('nft_blockchain.s3_header', { returnObjects: true }) || [];
+  const s3Rows = t('nft_blockchain.s3_rows', { returnObjects: true }) || [];
 
   return (
     <section ref={sectionRef} style={{ background: 'var(--darker-green)', padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
@@ -46,8 +51,8 @@ export default function NFTBlockchain() {
       {/* ── 1. BLOCKCHAIN VISUALIZATION ───────────────────── */}
       <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', marginBottom: '10rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <AnimatedText text="SECURED BY THE NETWORK" el="h3" style={{ fontSize: '1rem', color: 'var(--gold)', letterSpacing: '0.2em', marginBottom: '1rem' }} />
-          <AnimatedText text="Immutable. Decentralized. Eternal." el="h2" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)' }} />
+          <AnimatedText text={t('nft_blockchain.s1_subtitle')} el="h3" style={{ fontSize: '1rem', color: 'var(--gold)', letterSpacing: '0.2em', marginBottom: '1rem' }} />
+          <AnimatedText text={t('nft_blockchain.s1_title')} el="h2" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)' }} />
         </div>
 
         <div style={{ position: 'relative', height: '400px', background: 'rgba(0, 45, 26, 0.3)', borderRadius: 'var(--radius-xl)', border: '1px solid rgba(163,126,44,0.2)', overflow: 'hidden' }}>
@@ -91,21 +96,20 @@ export default function NFTBlockchain() {
 
         {/* Right: Storytelling */}
         <div style={{ flex: '1 1 min(100%, 400px)' }}>
-          <AnimatedText text="THE PARADIGM SHIFT" el="h3" style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }} />
-          <AnimatedText text="Redefining Rarity" el="h2" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)', marginBottom: '2rem' }} />
+          <AnimatedText text={t('nft_blockchain.s2_subtitle')} el="h3" style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1.5rem' }} />
+          <AnimatedText text={t('nft_blockchain.s2_title')} el="h2" style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)', marginBottom: '2rem' }} />
           
           <div style={{ marginBottom: '2rem', padding: '1.5rem', background: 'rgba(255,0,0,0.05)', borderLeft: '4px solid rgba(255,0,0,0.3)', borderRadius: '0 8px 8px 0' }}>
-            <h4 style={{ color: 'rgba(255,255,255,0.8)', margin: '0 0 0.5rem 0', fontFamily: 'var(--font-heading)', fontSize: '1.2rem' }}>Before NFTs</h4>
-            <p style={{ color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.6 }}>Digital assets could be copied infinitely. True ownership of a digital item was impossible to verify, rendering them virtually worthless.</p>
+            <h4 style={{ color: 'rgba(255,255,255,0.8)', margin: '0 0 0.5rem 0', fontFamily: 'var(--font-heading)', fontSize: '1.2rem' }}>{t('nft_blockchain.before_title')}</h4>
+            <p style={{ color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.6 }}>{t('nft_blockchain.before_text')}</p>
           </div>
 
           <div style={{ padding: '1.5rem', background: 'rgba(163,126,44,0.1)', borderLeft: '4px solid var(--gold)', borderRadius: '0 8px 8px 0' }}>
-            <h4 style={{ color: 'var(--gold)', margin: '0 0 0.5rem 0', fontFamily: 'var(--font-heading)', fontSize: '1.2rem' }}>After NFTs</h4>
+            <h4 style={{ color: 'var(--gold)', margin: '0 0 0.5rem 0', fontFamily: 'var(--font-heading)', fontSize: '1.2rem' }}>{t('nft_blockchain.after_title')}</h4>
             <ul style={{ color: 'var(--cream)', margin: 0, paddingLeft: '1.2rem', lineHeight: 1.8 }}>
-              <li>Verified digital ownership</li>
-              <li>Provable digital scarcity</li>
-              <li>Unalterable luxury authentication</li>
-              <li>Secure provenance & history</li>
+              {afterList.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -114,23 +118,22 @@ export default function NFTBlockchain() {
       {/* ── 3. NFT VS CRYPTO COMPARISON ───────────────────── */}
       <div className="section-inner" style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <AnimatedText text="CRYPTOCURRENCY VS NFT" el="h2" style={{ fontSize: '2.5rem', color: 'var(--cream)', fontFamily: 'var(--font-heading)', marginBottom: '1rem' }} />
-          <AnimatedText text="Understanding the fundamental difference." el="p" style={{ color: 'var(--gold)', letterSpacing: '0.05em' }} />
+          <AnimatedText text={t('nft_blockchain.s3_title')} el="h2" style={{ fontSize: '2.5rem', color: 'var(--cream)', fontFamily: 'var(--font-heading)', marginBottom: '1rem' }} />
+          <AnimatedText text={t('nft_blockchain.s3_subtitle')} el="p" style={{ color: 'var(--gold)', letterSpacing: '0.05em' }} />
         </div>
 
         <div style={{ background: 'rgba(0, 30, 15, 0.6)', border: '1px solid rgba(163,126,44,0.3)', borderRadius: 'var(--radius-lg)', overflowX: 'auto', overflowY: 'hidden', backdropFilter: 'blur(20px)' }}>
           <div style={{ minWidth: '600px' }}>
           {/* Header */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', padding: '1.5rem', background: 'rgba(163,126,44,0.1)', borderBottom: '2px solid rgba(163,126,44,0.4)', fontFamily: 'var(--font-heading)', letterSpacing: '0.1em', color: 'var(--gold-light)' }}>
-            <div>FEATURE</div>
-            <div>CRYPTOCURRENCY</div>
-            <div>NFT (NON-FUNGIBLE)</div>
+            <div>{s3Header[0]}</div>
+            <div>{s3Header[1]}</div>
+            <div>{s3Header[2]}</div>
           </div>
           
-          <ComparisonRow title="Nature" crypto="Fungible (Identical)" nft="Unique (One-of-one)" delay={0.2} />
-          <ComparisonRow title="Classification" crypto="Currency / Medium of Exchange" nft="Digital Asset / Collectible" delay={0.3} />
-          <ComparisonRow title="Examples" crypto="Bitcoin (BTC), Ethereum (ETH)" nft="Luxury Watches, Digital Art" delay={0.4} />
-          <ComparisonRow title="Value Basis" crypto="Equal units (1 BTC = 1 BTC)" nft="Subjective & Historical Value" delay={0.5} />
+          {s3Rows.map((row, i) => (
+            <ComparisonRow key={i} title={row.title} crypto={row.crypto} nft={row.nft} delay={0.2 + (i * 0.1)} />
+          ))}
           </div>
         </div>
       </div>

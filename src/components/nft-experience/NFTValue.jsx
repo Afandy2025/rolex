@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import AnimatedText from '../AnimatedText';
 
 const LUXURY_EASE = [0.22, 1, 0.36, 1];
@@ -72,6 +73,9 @@ function UseCaseItem({ title, icon }) {
 export default function NFTValue() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const { t } = useTranslation();
+  const values = t('nft_value.values', { returnObjects: true }) || [];
+  const useCases = t('nft_value.use_cases', { returnObjects: true }) || [];
 
   return (
     <section ref={sectionRef} style={{ padding: '10rem 0', background: 'var(--dark-green)', position: 'relative' }}>
@@ -79,8 +83,8 @@ export default function NFTValue() {
       {/* ── 1. VALUE BLOCKS ───────────────────────────────── */}
       <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', marginBottom: '10rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-          <AnimatedText text="INTRINSIC VALUE" el="h3" style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }} />
-          <AnimatedText text="The Metrics of Luxury" el="h2" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)' }} />
+          <AnimatedText text={t('nft_value.s1_title')} el="h3" style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }} />
+          <AnimatedText text={t('nft_value.s1_subtitle')} el="h2" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)' }} />
         </div>
 
         <motion.div
@@ -89,18 +93,17 @@ export default function NFTValue() {
           animate={isInView ? 'visible' : 'hidden'}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}
         >
-          <ValueBlock index={1} title="Digital Scarcity" desc="Unlike standard digital files, NFTs are strictly limited. Code guarantees maximum supply, ensuring rarity." stat="1 of 1" />
-          <ValueBlock index={2} title="Ownership Verification" desc="Instantly cryptographically prove that you are the sole owner of the asset anywhere in the world." stat="100%" />
-          <ValueBlock index={3} title="Community Access" desc="Holding the NFT grants access to exclusive private clubs, events, and future airdrops." stat="VIP" />
-          <ValueBlock index={4} title="Digital Identity" desc="Your wallet is your new showcase. NFTs represent your status and taste in the decentralized web." stat="Web3" />
+          {values.map((v, i) => (
+            <ValueBlock key={i} index={i + 1} title={v.title} desc={v.desc} stat={v.stat} />
+          ))}
         </motion.div>
       </div>
 
       {/* ── 2. USE CASES GRID ─────────────────────────────── */}
       <div className="section-inner" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 2rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-          <AnimatedText text="EXPANDING HORIZONS" el="h3" style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }} />
-          <AnimatedText text="Real-World Applications" el="h2" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)' }} />
+          <AnimatedText text={t('nft_value.s2_title')} el="h3" style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '1rem' }} />
+          <AnimatedText text={t('nft_value.s2_subtitle')} el="h2" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)' }} />
         </div>
 
         <motion.div
@@ -110,12 +113,12 @@ export default function NFTValue() {
           viewport={{ once: true, margin: '-50px' }}
           style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}
         >
-          <UseCaseItem icon="🎨" title="Digital Art" />
-          <UseCaseItem icon="🎮" title="Gaming" />
-          <UseCaseItem icon="🎵" title="Music" />
-          <UseCaseItem icon="🏙️" title="Virtual Real Estate" />
-          <UseCaseItem icon="👗" title="Luxury Fashion" />
-          <UseCaseItem icon="⌚" title="Watches & Authentication" />
+          <UseCaseItem icon="🎨" title={useCases[0]} />
+          <UseCaseItem icon="🎮" title={useCases[1]} />
+          <UseCaseItem icon="🎵" title={useCases[2]} />
+          <UseCaseItem icon="🏙️" title={useCases[3]} />
+          <UseCaseItem icon="👗" title={useCases[4]} />
+          <UseCaseItem icon="⌚" title={useCases[5]} />
         </motion.div>
       </div>
 

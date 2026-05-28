@@ -11,17 +11,12 @@
 
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 /* ── Custom luxury easing ─────────────────────────────── */
 const LUXURY_EASE = [0.22, 1, 0.36, 1];
 
-/* ── Stat data ────────────────────────────────────────── */
-const STATS = [
-  { target: 88, label: 'NFTs Minted', prefix: '', suffix: '' },
-  { target: 12, label: 'ETH Total Volume', prefix: 'Ξ ', suffix: '' },
-  { target: 1200, label: 'Holders', prefix: '', suffix: '+' },
-  { target: 100, label: 'Authentic', prefix: '', suffix: '%' },
-];
+/* ── Stat data array removed, data will come from translation ── */
 
 /* ── Animation variants ───────────────────────────────── */
 const containerVariants = {
@@ -235,7 +230,11 @@ function GoldParticles({ count = 15 }) {
    ═══════════════════════════════════════════════════════════ */
 export default function Stats() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: '-60px' });
+  const isInView = useInView(sectionRef, { once: true, margin: '-50px' });
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === 'rtl';
+
+  const stats = t('stats', { returnObjects: true }) || [];
 
   return (
     <section ref={sectionRef} style={styles.section}>
@@ -250,7 +249,7 @@ export default function Stats() {
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
       >
-        {STATS.map((stat, i) => {
+        {stats.map((stat, i) => {
           // Create the uneven asymmetric grid spans for desktop
           const gridSpans = ['1 / span 3', '4 / span 3', '8 / span 3', '11 / span 2'];
           const classNames = "col-span-md-3 col-span-sm-full";
@@ -258,7 +257,7 @@ export default function Stats() {
             <StatItem
               key={stat.label}
               stat={stat}
-              isLast={i === STATS.length - 1}
+              isLast={i === stats.length - 1}
               shouldCount={isInView}
               gridColumn={gridSpans[i] || 'span 3'}
               className={classNames}

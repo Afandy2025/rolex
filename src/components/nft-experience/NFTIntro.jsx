@@ -1,5 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 import { motion, useInView, useSpring, useScroll, useTransform } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import AnimatedText from '../AnimatedText';
 import pastedImage from '../../../assets/Pasted image.png';
 
@@ -98,6 +99,7 @@ function HoverTiltCard({ title, icon }) {
 export default function NFTIntro() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const { t } = useTranslation();
 
   return (
     <section ref={sectionRef} style={{ position: 'relative', padding: '10rem 0', background: 'var(--darker-green)', overflow: 'hidden' }}>
@@ -127,7 +129,7 @@ export default function NFTIntro() {
           <div style={{ maxWidth: '600px', textAlign: 'left' }}>
             {isInView && (
               <AnimatedText 
-                text="THE FUTURE OF OWNERSHIP" 
+                text={t('nft_intro.title')} 
                 el="h2" 
                 className="gold-gradient-text"
                 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'var(--font-heading)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1.5rem' }}
@@ -135,7 +137,7 @@ export default function NFTIntro() {
             )}
             {isInView && (
               <AnimatedText 
-                text="Luxury watches are no longer just physical objects. With NFT technology, time itself becomes digitally immortal." 
+                text={t('nft_intro.subtitle')} 
                 el="p" 
                 style={{ fontSize: 'clamp(1rem, 1.5vw, 1.1rem)', color: 'rgba(245,240,232,0.7)', lineHeight: 1.8 }}
               />
@@ -194,7 +196,7 @@ export default function NFTIntro() {
             transition={{ duration: 1, ease: LUXURY_EASE, delay: 0.6 }}
             style={{ fontSize: '1.25rem', color: 'var(--cream)', maxWidth: '700px', textAlign: 'center', lineHeight: 1.8, fontWeight: 300, fontStyle: 'italic' }}
           >
-            "Imagine owning a one-of-a-kind luxury watch whose authenticity, ownership history, rarity, and digital identity are permanently secured on the blockchain."
+            {t('nft_intro.p1')}
           </motion.p>
         </div>
 
@@ -256,6 +258,8 @@ const SvgUtility = () => (
 function RowCards() {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, margin: '-50px' });
+  const { t } = useTranslation();
+  const cards = t('nft_intro.cards', { returnObjects: true }) || [];
 
   return (
     <div style={{ width: '100%', overflow: 'hidden' }}>
@@ -274,22 +278,22 @@ function RowCards() {
         }}
       >
         <div style={{ flex: '0 0 auto', width: 'clamp(300px, 25vw, 400px)', scrollSnapAlign: 'start' }}>
-          <HoverTiltCard title="Digital Ownership" icon={<SvgKey />} />
+          <HoverTiltCard title={cards[0]} icon={<SvgKey />} />
         </div>
         <div style={{ flex: '0 0 auto', width: 'clamp(300px, 25vw, 400px)', scrollSnapAlign: 'start' }}>
-          <HoverTiltCard title="Blockchain Authentication" icon={<SvgShield />} />
+          <HoverTiltCard title={cards[1]} icon={<SvgShield />} />
         </div>
         <div style={{ flex: '0 0 auto', width: 'clamp(300px, 25vw, 400px)', scrollSnapAlign: 'start' }}>
-          <HoverTiltCard title="Smart Contracts" icon={<SvgContract />} />
+          <HoverTiltCard title={cards[2]} icon={<SvgContract />} />
         </div>
         <div style={{ flex: '0 0 auto', width: 'clamp(300px, 25vw, 400px)', scrollSnapAlign: 'start' }}>
-          <HoverTiltCard title="Scarcity & Exclusivity" icon={<SvgDiamond />} />
+          <HoverTiltCard title={cards[3]} icon={<SvgDiamond />} />
         </div>
         <div style={{ flex: '0 0 auto', width: 'clamp(300px, 25vw, 400px)', scrollSnapAlign: 'start' }}>
-          <HoverTiltCard title="Luxury Identity" icon={<SvgCrown />} />
+          <HoverTiltCard title={cards[4]} icon={<SvgCrown />} />
         </div>
         <div style={{ flex: '0 0 auto', width: 'clamp(300px, 25vw, 400px)', scrollSnapAlign: 'start' }}>
-          <HoverTiltCard title="NFT Utility" icon={<SvgUtility />} />
+          <HoverTiltCard title={cards[5]} icon={<SvgUtility />} />
         </div>
       </motion.div>
     </div>

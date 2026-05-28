@@ -7,13 +7,7 @@
    ═══════════════════════════════════════════════════════════ */
 
 import { useState } from 'react';
-
-// The ticker text — repeated for density
-const TICKER_TEXT =
-  'ROLEX × NFT  ◆  LIMITED EDITION  ◆  CROWN COLLECTION  ◆  MINT NOW  ◆  ';
-
-// Repeat enough times to fill ultra-wide screens
-const repeatedText = Array(12).fill(TICKER_TEXT).join('');
+import { useTranslation } from 'react-i18next';
 
 /* ── Styles ──────────────────────────────────────────────── */
 const styles = {
@@ -51,6 +45,9 @@ const styles = {
 
 export default function Marquee() {
   const [hovered, setHovered] = useState(false);
+  const { t } = useTranslation();
+  const TICKER_TEXT = t('marquee.text');
+  const repeatedText = Array(12).fill(TICKER_TEXT).join('');
 
   return (
     <>
@@ -58,7 +55,7 @@ export default function Marquee() {
       <style>{`
         @keyframes marquee-scroll {
           0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(calc(-50% * var(--dir-sign, 1))); }
         }
       `}</style>
 

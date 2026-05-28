@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import AnimatedText from '../AnimatedText';
 
 const LUXURY_EASE = [0.22, 1, 0.36, 1];
@@ -67,6 +68,8 @@ function MagneticButton({ children, primary }) {
 export default function NFTEmpireConclusion() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const { t } = useTranslation();
+  const pills = t('nft_empire.pills', { returnObjects: true }) || [];
 
   return (
     <>
@@ -84,15 +87,15 @@ export default function NFTEmpireConclusion() {
         <div className="section-inner" style={{ maxWidth: '1000px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 2, textAlign: 'center' }}>
           
           {isInView && (
-            <AnimatedText text="THE DIGITAL EMPIRE OF THE FUTURE" el="h2" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)', textTransform: 'uppercase', marginBottom: '2rem' }} className="gold-gradient-text" />
+            <AnimatedText text={t('nft_empire.title')} el="h2" style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)', textTransform: 'uppercase', marginBottom: '2rem' }} className="gold-gradient-text" />
           )}
           
           {isInView && (
-            <AnimatedText text="Beyond art. Beyond luxury. The blockchain is rebuilding the foundational architecture of society. NFTs will soon power the core of human identity and interaction." el="p" style={{ fontSize: '1.2rem', color: 'rgba(245,240,232,0.8)', lineHeight: 1.8, maxWidth: '800px', margin: '0 auto 4rem auto' }} />
+            <AnimatedText text={t('nft_empire.text')} el="p" style={{ fontSize: '1.2rem', color: 'rgba(245,240,232,0.8)', lineHeight: 1.8, maxWidth: '800px', margin: '0 auto 4rem auto' }} />
           )}
 
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
-            {['Digital Identity', 'Luxury Authentication', 'Smart Ownership', 'Event Access', 'Metaverse Products', 'Education Certificates', 'Digital Passports'].map((item, i) => (
+            {pills.map((item, i) => (
               <motion.div
                 key={item}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -141,9 +144,9 @@ export default function NFTEmpireConclusion() {
             transition={{ duration: 1.5, ease: LUXURY_EASE }}
             style={{ fontSize: 'clamp(3rem, 7vw, 7rem)', color: 'var(--cream)', fontFamily: 'var(--font-heading)', textTransform: 'uppercase', lineHeight: 1.1, marginBottom: '4rem', textShadow: '0 20px 40px rgba(0,0,0,0.8)' }}
           >
-            OWN TIME.<br/>
-            OWN HISTORY.<br/>
-            <span className="gold-gradient-text">OWN THE FUTURE.</span>
+            {t('nft_empire.cta_l1')}<br/>
+            {t('nft_empire.cta_l2')}<br/>
+            <span className="gold-gradient-text">{t('nft_empire.cta_l3')}</span>
           </motion.h2>
 
           <motion.div 
@@ -153,8 +156,8 @@ export default function NFTEmpireConclusion() {
             transition={{ duration: 1, delay: 0.5, ease: LUXURY_EASE }}
             style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}
           >
-            <MagneticButton primary>Explore Collection</MagneticButton>
-            <MagneticButton>Enter The NFT Empire</MagneticButton>
+            <MagneticButton primary>{t('nft_empire.btn_explore')}</MagneticButton>
+            <MagneticButton>{t('nft_empire.btn_enter')}</MagneticButton>
           </motion.div>
           
         </div>

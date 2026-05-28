@@ -11,34 +11,12 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 /* ── Custom luxury easing ─────────────────────────────── */
 const LUXURY_EASE = [0.22, 1, 0.36, 1];
 
-/* ── Step data ────────────────────────────────────────── */
-const STEPS = [
-  {
-    number: '01',
-    title: 'Connect Wallet',
-    description:
-      'Link your MetaMask or WalletConnect-compatible wallet in one click. Your gateway to authenticated digital luxury.',
-    icon: 'wallet',
-  },
-  {
-    number: '02',
-    title: 'Choose Your Crown',
-    description:
-      'Browse the curated collection of verified Rolex timepieces. Each piece is a unique 1-of-1 NFT with full provenance.',
-    icon: 'crown',
-  },
-  {
-    number: '03',
-    title: 'Mint & Own Forever',
-    description:
-      'Mint your chosen timepiece to the blockchain. Immutable ownership, verified authenticity — yours for eternity.',
-    icon: 'diamond',
-  },
-];
+/* ── Step data array removed, data will come from translation ── */
 
 /* ── Inline SVG Icons ─────────────────────────────────── */
 const icons = {
@@ -398,6 +376,15 @@ function StepCard({ step, index, isInView, gridColumn, marginTop, className }) {
 export default function HowItWorks() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const { t } = useTranslation();
+
+  const stepsData = t('how_it_works.steps', { returnObjects: true }) || [];
+  const iconsKeys = ['wallet', 'crown', 'diamond'];
+  const steps = stepsData.map((step, index) => ({
+    ...step,
+    number: `0${index + 1}`,
+    icon: iconsKeys[index]
+  }));
 
   return (
     <section
@@ -417,17 +404,17 @@ export default function HowItWorks() {
         {/* ── Header ──────────────────────────────────── */}
         <motion.div style={styles.header} variants={titleVariants}>
           <h2 className="gold-gradient-text" style={styles.title}>
-            How It Works
+            {t('how_it_works.title')}
           </h2>
           <p style={styles.subtitle}>
-            Three steps to owning a piece of history
+            {t('how_it_works.subtitle')}
           </p>
           <div className="gold-divider" style={styles.dividerCenter} />
         </motion.div>
 
         {/* ── Step Cards ──────────────────────────────── */}
         <div className="cinematic-grid hiw-cards-row" style={{ alignItems: 'flex-start', marginTop: '4rem' }}>
-          {STEPS.map((step, i) => {
+          {steps.map((step, i) => {
             const gridSpans = ['1 / span 4', '5 / span 4', '9 / span 4'];
             const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
             const offsets = isMobile ? ['0px', '0px', '0px'] : ['0px', '80px', '40px']; // Asymmetric floating depth only on desktop

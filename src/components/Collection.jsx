@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { motion, useSpring, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import AnimatedText from './AnimatedText';
 
 /* ── Watch image imports ─────────────────────────────────── */
@@ -18,21 +19,9 @@ import watch11 from '../../assets/ChatGPT Image May 26, 2026, 04_34_36 PM.png';
 import watch12 from '../../assets/ChatGPT Image May 26, 2026, 04_34_51 PM.png';
 import watch13 from '../../assets/ChatGPT Image May 26, 2026, 04_34_59 PM.png';
 
-/* ── Watch Feature data ───────────────────────────────────────── */
-const WATCH_FEATURES = [
-  { name: 'The Dial', desc: 'Sunray finish with gold hour markers', image: watch01 },
-  { name: 'The Bezel', desc: 'Fluted 18 ct gold', image: watch02 },
-  { name: 'The Movement', desc: 'Perpetual, mechanical, self-winding', image: watch03 },
-  { name: 'The Bracelet', desc: 'Jubilee, five-piece links', image: watch04 },
-  { name: 'The Crown', desc: 'Screw-down, Twinlock double waterproofness', image: watch05 },
-  { name: 'The Crystal', desc: 'Scratch-resistant sapphire, Cyclops lens', image: watch06 },
-  { name: 'The Clasp', desc: 'Folding Oysterclasp with Easylink', image: watch07 },
-  { name: 'The Luminescence', desc: 'Chromalight display with long-lasting blue glow', image: watch08 },
-  { name: 'The Architecture', desc: 'Oyster, 41 mm, Oystersteel and yellow gold', image: watch09 },
-  { name: 'The Calibre', desc: '3235, Manufacture Rolex', image: watch10 },
-  { name: 'The Precision', desc: '-2/+2 sec/day, after casing', image: watch11 },
-  { name: 'The Waterproofness', desc: 'Waterproof to 100 metres / 330 feet', image: watch12 },
-  { name: 'The Certification', desc: 'Superlative Chronometer (COSC)', image: watch13 },
+const WATCH_IMAGES = [
+  watch01, watch02, watch03, watch04, watch05, watch06, watch07,
+  watch08, watch09, watch10, watch11, watch12, watch13
 ];
 
 /* ── Luxury easing ───────────────────────────────────────── */
@@ -111,9 +100,10 @@ function FeatureCard({ item, index }) {
           }}
         />
 
-        <div style={{ width: '100%', height: '65%', overflow: 'hidden', position: 'relative' }}>
-          <img
-            src={item.image} alt={item.name} loading="lazy"
+        <div style={{ height: '60%', width: '100%', overflow: 'hidden' }}>
+          <img 
+            src={WATCH_IMAGES[index]} 
+            alt={item.name} loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1)', transform: hovered ? 'scale(1.08)' : 'scale(1)' }}
           />
           <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '50%', background: 'linear-gradient(to top, rgba(0,45,26,0.95) 0%, transparent 100%)', pointerEvents: 'none' }} />
@@ -134,12 +124,16 @@ function FeatureCard({ item, index }) {
 export default function Collection() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.dir() === 'rtl';
+
+  const translatedFeatures = t('collection.features', { returnObjects: true }) || [];
 
   // Map vertical scroll progress to horizontal translation
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-80%']);
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', isRtl ? '80%' : '-80%']);
   
   // Also add some parallax effects for background elements
-  const bgX = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const bgX = useTransform(scrollYProgress, [0, 1], ['0%', isRtl ? '-20%' : '20%']);
 
   return (
     <section ref={targetRef} style={{ position: 'relative', height: '400vh', background: 'var(--dark-green)' }}>
@@ -150,14 +144,14 @@ export default function Collection() {
         <motion.div style={{ position: 'absolute', inset: 0, opacity: 0.1, x: bgX, backgroundImage: 'linear-gradient(45deg, var(--gold) 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
 
         <div style={{ padding: '0 4rem', marginBottom: '3rem', position: 'relative', zIndex: 10 }}>
-          <AnimatedText text="THE MASTERPIECE" el="h2" style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', fontFamily: 'var(--font-heading)', color: 'var(--cream)', textTransform: 'uppercase' }} />
-          <AnimatedText text="Every angle reveals a new level of perfection. Scroll to explore." el="p" style={{ fontSize: '1.2rem', color: 'var(--gold-light)' }} />
+          <AnimatedText text={t('collection.title')} el="h2" style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', fontFamily: 'var(--font-heading)', color: 'var(--cream)', textTransform: 'uppercase' }} />
+          <AnimatedText text={t('collection.subtitle')} el="p" style={{ fontSize: '1.2rem', color: 'var(--gold-light)' }} />
         </div>
 
         {/* Horizontal scrolling track */}
-        <motion.div style={{ x, display: 'flex', gap: '3rem', padding: '0 4rem', width: 'max-content' }}>
-          {WATCH_FEATURES.map((item, i) => (
-            <FeatureCard key={item.name} item={item} index={i} />
+        <motion.div style={{ x, display: 'flex', gap: '3rem', padding: '0 4rem', width: 'max-content', direction: 'ltr' }}>
+          {translatedFeatures.map((item, i) => (
+            <FeatureCard key={i} item={item} index={i} />
           ))}
         </motion.div>
       </div>

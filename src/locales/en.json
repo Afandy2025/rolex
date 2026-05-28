@@ -1,0 +1,219 @@
+{
+  "nav": {
+    "the_watch": "The Watch",
+    "story": "Story",
+    "roadmap": "Roadmap"
+  },
+  "hero": {
+    "title": "THE CROWN ON THE BLOCKCHAIN",
+    "subtitle": "Rolex × NFT — Timeless Luxury, Digitally Owned. The first-ever on-chain heritage collection.",
+    "btn_legend": "THE LEGEND",
+    "btn_explore": "EXPLORE DETAILS",
+    "scroll": "Scroll"
+  },
+  "marquee": {
+    "text": "ROLEX × NFT  ◆  LIMITED EDITION  ◆  CROWN COLLECTION  ◆  MINT NOW  ◆  "
+  },
+  "collection": {
+    "title": "THE MASTERPIECE",
+    "subtitle": "Every angle reveals a new level of perfection. Scroll to explore.",
+    "features": [
+      { "name": "The Dial", "desc": "Sunray finish with gold hour markers" },
+      { "name": "The Bezel", "desc": "Fluted 18 ct gold" },
+      { "name": "The Movement", "desc": "Perpetual, mechanical, self-winding" },
+      { "name": "The Bracelet", "desc": "Jubilee, five-piece links" },
+      { "name": "The Crown", "desc": "Screw-down, Twinlock double waterproofness" },
+      { "name": "The Crystal", "desc": "Scratch-resistant sapphire, Cyclops lens" },
+      { "name": "The Clasp", "desc": "Folding Oysterclasp with Easylink" },
+      { "name": "The Luminescence", "desc": "Chromalight display with long-lasting blue glow" },
+      { "name": "The Architecture", "desc": "Oyster, 41 mm, Oystersteel and yellow gold" },
+      { "name": "The Calibre", "desc": "3235, Manufacture Rolex" },
+      { "name": "The Precision", "desc": "-2/+2 sec/day, after casing" },
+      { "name": "The Waterproofness", "desc": "Waterproof to 100 metres / 330 feet" },
+      { "name": "The Certification", "desc": "Superlative Chronometer (COSC)" }
+    ]
+  },
+  "story": {
+    "label": "The Legend of the Conqueror",
+    "heading": "Conqueror of Empires. Master of Time.",
+    "p1": "He conquered the ancient world, but his greatest ambition lay far beyond the boundaries of his era. Alexander, the Reptilian King, did not just seek land—he sought eternity.",
+    "p2": "During the siege of a forgotten mystic temple, he discovered a rift in the fabric of the universe—a portal through time itself. Stepping into the modern era, he found not armies, but the ultimate symbol of enduring power and precision: The Rolex.",
+    "p3": "This NFT is the physical proof of that impossible legend. A breathtaking fusion of ancient conquest and modern luxury, minted eternally on the blockchain. A timepiece worthy of an immortal emperor."
+  },
+  "how_it_works": {
+    "title": "How It Works",
+    "subtitle": "Three steps to owning a piece of history",
+    "steps": [
+      {
+        "title": "Connect Wallet",
+        "desc": "Link your MetaMask or WalletConnect-compatible wallet in one click. Your gateway to authenticated digital luxury."
+      },
+      {
+        "title": "Choose Your Crown",
+        "desc": "Browse the curated collection of verified Rolex timepieces. Each piece is a unique 1-of-1 NFT with full provenance."
+      },
+      {
+        "title": "Mint & Own Forever",
+        "desc": "Mint your chosen timepiece to the blockchain. Immutable ownership, verified authenticity — yours for eternity."
+      }
+    ]
+  },
+  "stats": [
+    { "target": 88, "label": "NFTs Minted", "prefix": "", "suffix": "" },
+    { "target": 12, "label": "ETH Total Volume", "prefix": "Ξ ", "suffix": "" },
+    { "target": 1200, "label": "Holders", "prefix": "", "suffix": "+" },
+    { "target": 100, "label": "Authentic", "prefix": "", "suffix": "%" }
+  ],
+  "roadmap": {
+    "title": "Roadmap",
+    "subtitle": "The journey of the Crown Collection",
+    "phases": [
+      {
+        "phase": "Phase 1",
+        "title": "Genesis Drop",
+        "quarter": "Q1 2025",
+        "desc": "Launch of 88 unique Crown NFTs. Each tied to a real Rolex reference. Whitelist access for early collectors."
+      },
+      {
+        "phase": "Phase 2",
+        "title": "Secondary Market",
+        "quarter": "Q2 2025",
+        "desc": "OpenSea and Blur marketplace integration. Royalty system for original minters. Price discovery begins."
+      },
+      {
+        "phase": "Phase 3",
+        "title": "Metaverse Integration",
+        "quarter": "Q3 2025",
+        "desc": "Wear your Crown NFT in Decentraland, The Sandbox, and other metaverse platforms. Flex your digital Rolex."
+      },
+      {
+        "phase": "Phase 4",
+        "title": "Crown DAO",
+        "quarter": "Q4 2025",
+        "desc": "NFT holders become members of the Crown DAO. Vote on future collections, partnerships, and exclusive events."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "q": "What is a Rolex NFT?",
+        "a": "A Rolex NFT is a unique digital token on the Ethereum blockchain that represents an exclusive digital artwork of a Rolex timepiece. Each NFT is one-of-a-kind and comes with proof of ownership and authenticity."
+      },
+      {
+        "q": "How do I mint a Crown NFT?",
+        "a": "Connect your MetaMask or WalletConnect-compatible wallet, browse the collection, select your desired timepiece, and click Mint. The transaction will be processed on the Ethereum network."
+      },
+      {
+        "q": "What blockchain is this on?",
+        "a": "The Crown Collection is built on the Ethereum blockchain using the ERC-721 standard, ensuring maximum security, interoperability, and decentralization."
+      },
+      {
+        "q": "Is this affiliated with Rolex SA?",
+        "a": "This is a conceptual university project exploring the intersection of luxury brands and Web3 technology. It is not affiliated with, endorsed by, or connected to Rolex SA in any way."
+      },
+      {
+        "q": "Can I resell my NFT?",
+        "a": "Yes! Once minted, your Crown NFT is yours to keep, display, or trade on any compatible NFT marketplace including OpenSea, Blur, and LooksRare."
+      },
+      {
+        "q": "What wallet do I need?",
+        "a": "You'll need an Ethereum-compatible wallet such as MetaMask, WalletConnect, Coinbase Wallet, or Rainbow. Make sure you have enough ETH to cover the mint price plus gas fees."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Timeless Luxury, Digitally Owned",
+    "copyright": "© 2025 Rolex × NFT. All Rights Reserved.",
+    "disclaimer": "A conceptual university project. Not affiliated with Rolex SA."
+  },
+  "nft_intro": {
+    "title": "THE FUTURE OF OWNERSHIP",
+    "subtitle": "Luxury watches are no longer just physical objects. With NFT technology, time itself becomes digitally immortal.",
+    "p1": "\"Imagine owning a one-of-a-kind luxury watch whose authenticity, ownership history, rarity, and digital identity are permanently secured on the blockchain.\"",
+    "cards": [
+      "Digital Ownership",
+      "Blockchain Authentication",
+      "Smart Contracts",
+      "Scarcity & Exclusivity",
+      "Luxury Identity",
+      "NFT Utility"
+    ]
+  },
+  "nft_value": {
+    "s1_title": "INTRINSIC VALUE",
+    "s1_subtitle": "The Metrics of Luxury",
+    "values": [
+      { "title": "Digital Scarcity", "desc": "Unlike standard digital files, NFTs are strictly limited. Code guarantees maximum supply, ensuring rarity.", "stat": "1 of 1" },
+      { "title": "Ownership Verification", "desc": "Instantly cryptographically prove that you are the sole owner of the asset anywhere in the world.", "stat": "100%" },
+      { "title": "Community Access", "desc": "Holding the NFT grants access to exclusive private clubs, events, and future airdrops.", "stat": "VIP" },
+      { "title": "Digital Identity", "desc": "Your wallet is your new showcase. NFTs represent your status and taste in the decentralized web.", "stat": "Web3" }
+    ],
+    "s2_title": "EXPANDING HORIZONS",
+    "s2_subtitle": "Real-World Applications",
+    "use_cases": [
+      "Digital Art",
+      "Gaming",
+      "Music",
+      "Virtual Real Estate",
+      "Luxury Fashion",
+      "Watches & Authentication"
+    ]
+  },
+  "nft_watch_integration": {
+    "subtitle": "THE PHYSICAL MEETS DIGITAL",
+    "title": "A New Dimension of Luxury",
+    "text": "Every masterpiece is cryptographically paired with a 1-of-1 NFT, locking its legacy into the blockchain forever.",
+    "status": "BLOCKCHAIN VERIFIED",
+    "dashboard": [
+      { "title": "Smart Contract", "value": "0x7a2...9F1A" },
+      { "title": "Digital Certificate", "value": "Minted (ERC-721)" },
+      { "title": "Serial Number", "value": "#R-2048-X" },
+      { "title": "Provenance", "value": "Immutable Ledger" },
+      { "title": "Metaverse / AR", "value": "Ready & Synced" }
+    ]
+  },
+  "nft_blockchain": {
+    "s1_subtitle": "SECURED BY THE NETWORK",
+    "s1_title": "Immutable. Decentralized. Eternal.",
+    "s2_subtitle": "THE PARADIGM SHIFT",
+    "s2_title": "Redefining Rarity",
+    "before_title": "Before NFTs",
+    "before_text": "Digital assets could be copied infinitely. True ownership of a digital item was impossible to verify, rendering them virtually worthless.",
+    "after_title": "After NFTs",
+    "after_list": [
+      "Verified digital ownership",
+      "Provable digital scarcity",
+      "Unalterable luxury authentication",
+      "Secure provenance & history"
+    ],
+    "s3_title": "CRYPTOCURRENCY VS NFT",
+    "s3_subtitle": "Understanding the fundamental difference.",
+    "s3_header": ["FEATURE", "CRYPTOCURRENCY", "NFT (NON-FUNGIBLE)"],
+    "s3_rows": [
+      { "title": "Nature", "crypto": "Fungible (Identical)", "nft": "Unique (One-of-one)" },
+      { "title": "Classification", "crypto": "Currency / Medium of Exchange", "nft": "Digital Asset / Collectible" },
+      { "title": "Examples", "crypto": "Bitcoin (BTC), Ethereum (ETH)", "nft": "Luxury Watches, Digital Art" },
+      { "title": "Value Basis", "crypto": "Equal units (1 BTC = 1 BTC)", "nft": "Subjective & Historical Value" }
+    ]
+  },
+  "nft_empire": {
+    "title": "THE DIGITAL EMPIRE OF THE FUTURE",
+    "text": "Beyond art. Beyond luxury. The blockchain is rebuilding the foundational architecture of society. NFTs will soon power the core of human identity and interaction.",
+    "pills": [
+      "Digital Identity",
+      "Luxury Authentication",
+      "Smart Ownership",
+      "Event Access",
+      "Metaverse Products",
+      "Education Certificates",
+      "Digital Passports"
+    ],
+    "cta_l1": "OWN TIME.",
+    "cta_l2": "OWN HISTORY.",
+    "cta_l3": "OWN THE FUTURE.",
+    "btn_explore": "Explore Collection",
+    "btn_enter": "Enter The NFT Empire"
+  }
+}

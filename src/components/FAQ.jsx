@@ -4,37 +4,12 @@
    ═══════════════════════════════════════════════════════════ */
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 /* ── Luxury easing ────────────────────────────────────── */
 const LUXURY_EASE = [0.22, 1, 0.36, 1];
 
-/* ── FAQ data ─────────────────────────────────────────── */
-const FAQ_DATA = [
-  {
-    q: 'What is a Rolex NFT?',
-    a: 'A Rolex NFT is a unique digital token on the Ethereum blockchain that represents an exclusive digital artwork of a Rolex timepiece. Each NFT is one-of-a-kind and comes with proof of ownership and authenticity.',
-  },
-  {
-    q: 'How do I mint a Crown NFT?',
-    a: 'Connect your MetaMask or WalletConnect-compatible wallet, browse the collection, select your desired timepiece, and click Mint. The transaction will be processed on the Ethereum network.',
-  },
-  {
-    q: 'What blockchain is this on?',
-    a: 'The Crown Collection is built on the Ethereum blockchain using the ERC-721 standard, ensuring maximum security, interoperability, and decentralization.',
-  },
-  {
-    q: 'Is this affiliated with Rolex SA?',
-    a: 'This is a conceptual university project exploring the intersection of luxury brands and Web3 technology. It is not affiliated with, endorsed by, or connected to Rolex SA in any way.',
-  },
-  {
-    q: 'Can I resell my NFT?',
-    a: 'Yes! Once minted, your Crown NFT is yours to keep, display, or trade on any compatible NFT marketplace including OpenSea, Blur, and LooksRare.',
-  },
-  {
-    q: 'What wallet do I need?',
-    a: "You'll need an Ethereum-compatible wallet such as MetaMask, WalletConnect, Coinbase Wallet, or Rainbow. Make sure you have enough ETH to cover the mint price plus gas fees.",
-  },
-];
+/* ── FAQ data array removed, data will come from translation ── */
 
 const s = {
   section: {
@@ -183,9 +158,10 @@ function FAQItem({ item, isOpen, onToggle }) {
   );
 }
 
-/* ── Main FAQ Component ───────────────────────────────── */
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
+  const { t } = useTranslation();
+  const faqData = t('faq.questions', { returnObjects: true }) || [];
 
   const toggle = (i) => {
     setOpenIndex((prev) => (prev === i ? null : i));
@@ -206,7 +182,7 @@ export default function FAQ() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.8, ease: LUXURY_EASE }}
           >
-            Frequently Asked Questions
+            {t('faq.title')}
           </motion.h2>
 
           <div style={s.dividerWrap}>
@@ -222,7 +198,7 @@ export default function FAQ() {
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, ease: LUXURY_EASE, delay: 0.15 }}
           >
-            {FAQ_DATA.map((item, i) => (
+            {faqData.map((item, i) => (
               <FAQItem
                 key={i}
                 item={item}

@@ -4,6 +4,7 @@
    ═══════════════════════════════════════════════════════════ */
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import rolexLogo from '../../assets/Logo_da_Rolex.png';
 
 /* ── Luxury easing ────────────────────────────────────── */
@@ -137,6 +138,7 @@ const s = {
 export default function Footer() {
   const borderRef = useRef(null);
   const isInView = useInView(borderRef, { once: true, margin: '-20px' });
+  const { t } = useTranslation();
 
   return (
     <footer style={s.footer} ref={borderRef}>
@@ -162,7 +164,7 @@ export default function Footer() {
             alt="Rolex Logo"
             style={{ height: '45px', width: 'auto', objectFit: 'contain', marginBottom: '1rem' }}
           />
-          <p style={s.tagline}>Timeless Luxury, Digitally Owned</p>
+          <p style={s.tagline}>{t('footer.tagline')}</p>
         </motion.div>
 
         {/* ── Middle: Social icons ────────────────────── */}
@@ -200,10 +202,10 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p style={s.copyright}>
-            © 2025 Rolex × NFT. All Rights Reserved.
+            {t('footer.copyright')}
           </p>
           <p style={s.disclaimer}>
-            A conceptual university project. Not affiliated with Rolex SA.
+            {t('footer.disclaimer')}
           </p>
         </motion.div>
       </div>

@@ -9,41 +9,12 @@ import {
   useTransform,
   useInView,
 } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 /* ── Luxury easing ────────────────────────────────────── */
 const LUXURY_EASE = [0.22, 1, 0.36, 1];
 
-/* ── Milestone data ───────────────────────────────────── */
-const MILESTONES = [
-  {
-    phase: 'Phase 1',
-    title: 'Genesis Drop',
-    quarter: 'Q1 2025',
-    description:
-      'Launch of 88 unique Crown NFTs. Each tied to a real Rolex reference. Whitelist access for early collectors.',
-  },
-  {
-    phase: 'Phase 2',
-    title: 'Secondary Market',
-    quarter: 'Q2 2025',
-    description:
-      'OpenSea and Blur marketplace integration. Royalty system for original minters. Price discovery begins.',
-  },
-  {
-    phase: 'Phase 3',
-    title: 'Metaverse Integration',
-    quarter: 'Q3 2025',
-    description:
-      'Wear your Crown NFT in Decentraland, The Sandbox, and other metaverse platforms. Flex your digital Rolex.',
-  },
-  {
-    phase: 'Phase 4',
-    title: 'Crown DAO',
-    quarter: 'Q4 2025',
-    description:
-      'NFT holders become members of the Crown DAO. Vote on future collections, partnerships, and exclusive events.',
-  },
-];
+/* ── Milestone data array removed, data will come from translation ── */
 
 /* ── Styles ───────────────────────────────────────────── */
 const s = {
@@ -234,9 +205,10 @@ function MilestoneCard({ data, index }) {
   );
 }
 
-/* ── Main Roadmap Component ───────────────────────────── */
 export default function Roadmap() {
   const timelineRef = useRef(null);
+  const { t } = useTranslation();
+  const milestones = t('roadmap.phases', { returnObjects: true }) || [];
 
   /* Scroll-linked gold line growth */
   const { scrollYProgress } = useScroll({
@@ -261,7 +233,7 @@ export default function Roadmap() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.8, ease: LUXURY_EASE }}
           >
-            Roadmap
+            {t('roadmap.title')}
           </motion.h2>
 
           <motion.p
@@ -271,7 +243,7 @@ export default function Roadmap() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            The journey of the Crown Collection
+            {t('roadmap.subtitle')}
           </motion.p>
 
           <div style={{ ...s.dividerWrap, justifyContent: 'flex-start' }}>
@@ -291,7 +263,7 @@ export default function Roadmap() {
           />
 
           {/* Milestones */}
-          {MILESTONES.map((m, i) => (
+          {milestones.map((m, i) => (
             <MilestoneCard key={m.phase} data={m} index={i} />
           ))}
         </div>

@@ -16,6 +16,7 @@ import {
   useTransform,
   useInView,
 } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import AnimatedText from './AnimatedText';
 
 /* ── Image Import ─────────────────────────────────────── */
@@ -162,6 +163,7 @@ const mobileBreak = `
 export default function Story() {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
+  const { t } = useTranslation();
 
   const isTextInView = useInView(textRef, { once: true, margin: '-80px' });
 
@@ -203,13 +205,13 @@ export default function Story() {
           animate={isTextInView ? 'visible' : 'hidden'}
         >
           <motion.p style={styles.label} variants={lineVariants}>
-            The Legend of the Conqueror
+            {t('story.label')}
           </motion.p>
           <motion.div className="gold-divider" variants={lineVariants} style={{ margin: '1rem 0' }} />
 
           {isTextInView && (
             <AnimatedText 
-              text="Conqueror of Empires. Master of Time." 
+              text={t('story.heading')} 
               el="h2" 
               style={styles.heading}
               className="gold-gradient-text"
@@ -219,17 +221,17 @@ export default function Story() {
           {isTextInView && (
             <>
               <AnimatedText 
-                text="He conquered the ancient world, but his greatest ambition lay far beyond the boundaries of his era. Alexander, the Reptilian King, did not just seek land—he sought eternity."
+                text={t('story.p1')}
                 el="p"
                 style={styles.paragraph}
               />
               <AnimatedText 
-                text="During the siege of a forgotten mystic temple, he discovered a rift in the fabric of the universe—a portal through time itself. Stepping into the modern era, he found not armies, but the ultimate symbol of enduring power and precision: The Rolex."
+                text={t('story.p2')}
                 el="p"
                 style={styles.paragraph}
               />
               <AnimatedText 
-                text="This NFT is the physical proof of that impossible legend. A breathtaking fusion of ancient conquest and modern luxury, minted eternally on the blockchain. A timepiece worthy of an immortal emperor."
+                text={t('story.p3')}
                 el="p"
                 style={styles.paragraph}
               />

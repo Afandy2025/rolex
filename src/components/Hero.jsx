@@ -11,15 +11,10 @@
    • Animated scroll indicator at bottom
    ═══════════════════════════════════════════════════════════ */
 
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  useInView,
-} from 'framer-motion';
+import { useRef, useCallback } from 'react';
+import { motion, useScroll, useTransform, useInView, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import AnimatedText from './AnimatedText';
 
 /* ── Import the hero video ────────────────────────────────── */
@@ -153,6 +148,7 @@ function MagneticButton({ children, className, onClick, to }) {
    ScrollIndicator — Bouncing chevron at the bottom
    ═══════════════════════════════════════════════════════════ */
 function ScrollIndicator() {
+  const { t } = useTranslation();
   return (
     <motion.div
       style={{
@@ -179,7 +175,7 @@ function ScrollIndicator() {
           color: 'rgba(245, 240, 232, 0.4)',
         }}
       >
-        Scroll
+        {t('hero.scroll')}
       </span>
 
       {/* ── Animated chevron arrow ─────────────────────────── */}
@@ -210,12 +206,13 @@ function ScrollIndicator() {
 export default function Hero() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const { t } = useTranslation();
 
   /* ── No heavy scroll tracking for performance ──────────── */
   const videoY = '0%';
 
   /* ── Headline text ──────────────────────────────────────── */
-  const headline = 'THE CROWN ON THE BLOCKCHAIN';
+  const headline = t('hero.title');
   const letters = headline.split('');
 
   /* ── Stagger variants for letter-by-letter reveal ──────── */
@@ -389,7 +386,7 @@ export default function Hero() {
           >
             {isInView && (
               <AnimatedText 
-                text="Rolex × NFT — Timeless Luxury, Digitally Owned. The first-ever on-chain heritage collection." 
+                text={t('hero.subtitle')}
                 staggerDelay={0.03} 
               />
             )}
@@ -411,11 +408,11 @@ export default function Hero() {
             }}
           >
             <MagneticButton className="btn-primary" to="/story">
-              THE LEGEND
+              {t('hero.btn_legend')}
             </MagneticButton>
 
             <MagneticButton className="btn-outline" to="/watch">
-              EXPLORE DETAILS
+              {t('hero.btn_explore')}
             </MagneticButton>
           </motion.div>
         </div>
